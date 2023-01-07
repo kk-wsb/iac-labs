@@ -26,7 +26,7 @@ jobs:
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
-        path: ~/example-app/.venv
+        path: ~/.cache
         key: ${{ runner.os }}-venv
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
@@ -57,7 +57,7 @@ jobs:
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
-        path: ~/example-app/.venv
+        path: ~/.cache
         key: ${{ runner.os }}-venv
     - name: Install Poetry
       uses: snok/install-poetry@v1.3.3
