@@ -25,11 +25,9 @@ jobs:
     - name: Cache build venv
       id: cached-poetry-dependencies
       uses: actions/cache@v3
-      env:
-          cache-name: cache-dependencies
       with:
-        path: .venv
-        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+        path: /home/runner/work/<path>/example-app/.venv
+        key: ${{ runner.os }}-venv
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
@@ -49,18 +47,21 @@ jobs:
       run:
         working-directory: ./example-app
 
+    concurrency:
+      group: checks
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Load cached venv
+    - name: Cache build venv
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
-        path: .venv
-        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+        path: /home/runner/work/<path>/example-app/.venv
+        key: ${{ runner.os }}-venv
     - name: Install Poetry
       uses: snok/install-poetry@v1.3.3
     - name: Install dependencies
@@ -80,18 +81,21 @@ jobs:
       run:
         working-directory: ./example-app
 
+    concurrency:
+      group: checks
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
-    - name: Load cached venv
+    - name: Cache build venv
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
-        path: .venv
-        key: venv-${{ runner.os }}-${{ steps.setup-python.outputs.python-version }}-${{ hashFiles('**/poetry.lock') }}
+        path: /home/runner/work/<path>/example-app/.venv
+        key: ${{ runner.os }}-venv
     - name: Install Poetry
       uses: snok/install-poetry@v1.3.3
     - name: Install dependencies
