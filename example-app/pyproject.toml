@@ -29,7 +29,7 @@ python-dotenv = "0.19.2"
 Flask-Minify = "0.37"
 Flask-MySQLdb = "^1.0.1"
 taskipy = "^1.10.3"
-psycopg2 = "^2.9.5"
+psycopg2-binary = "^2.9.5"
 
 black = "^22.10.0"
 pylint = "^2.15.5"
