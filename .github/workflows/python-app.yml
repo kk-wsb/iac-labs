@@ -41,6 +41,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
 
+    defaults:
+      run:
+        working-directory: ./example-app
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
