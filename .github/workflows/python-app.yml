@@ -39,3 +39,12 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+  test:
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+    - name: Run tests
+      run: |
+        poetry run test
