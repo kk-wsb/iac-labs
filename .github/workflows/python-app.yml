@@ -88,14 +88,8 @@ jobs:
       id: cached-poetry-dependencies
       uses: actions/cache@v3
       with:
-        path: ~/example-app/.venv
+        path: ~/.cache
         key: ${{ runner.os }}-venv
-    - name: Install Poetry
-      uses: snok/install-poetry@v1.3.3
-    - name: Install dependencies
-      if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-      run: |
-        poetry install --no-interaction --no-root
     - name: Run tests
       run: |
         poetry run task formatter
