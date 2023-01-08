@@ -133,8 +133,13 @@ jobs:
 
   test:
 
-    runs-on: ubuntu-latest
     needs: [linter, formatter, security]
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ "ubuntu-latest", "macos-latest" ]
+    runs-on: ${{ matrix.os }}
 
     defaults:
       run:
